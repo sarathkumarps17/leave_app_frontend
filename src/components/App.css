@@ -1,0 +1,107 @@
+body {
+  background: #ebedef;
+}
+
+.ui.top.menu {
+  z-index: 5;
+}
+
+.menu .logo.item {
+  padding: 0 !important;
+  box-shadow: none;
+  border: none !important;
+  background: none;
+}
+
+.logo.item::before {
+  display: none;
+}
+
+.ui.secondary.menu.left-menu {
+  z-index: 2;
+  padding-top: 50px;
+  height: 100%;
+  background: rgb(60, 75, 100);
+  color: rgb(255, 255, 255);
+}
+
+.ui.secondary.menu.left-menu a.item {
+  color: #fff;
+}
+
+.ui.secondary.menu.left-menu a.item:hover {
+  color: #fff !important;
+  background: rgb(14 19 27 / 21%);
+}
+
+.ui.secondary.menu.left-menu a.item.active {
+  color: #fff;
+  background: rgb(14 19 27 / 50%);
+}
+.ui.secondary.menu.left-menu .item > .icon:not(.dropdown) {
+  float: left;
+  margin-right: 12px !important;
+}
+
+.content-view {
+  padding-left: 18rem;
+  padding-top: 60px;
+  min-height: calc(100vh - 41px);
+}
+.top-heading {
+  background: #fff;
+}
+
+.top-heading .ui.divider {
+  margin: 0;
+}
+
+.file-input-button.ui.button {
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.file-input-button input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+.field.error {
+  color: red;
+  margin-top: -0.5em !important;
+}
+
+.alert-wrapper {
+  position: fixed;
+  top: 40vh;
+  text-align: center;
+  z-index: 999;
+  width: 100%;
+}
+
+.ui.ui.message.top-alerts {
+  margin: 1em;
+  min-width: 250px;
+  border-radius: 8px;
+  right: 0;
+  display: inline-block;
+  box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.22) inset,
+    0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15) !important;
+}
+
+.card .ui.statistic {
+  width: 100%;
+}
+
+.ui.form .disabled.field,
+.ui.form .field.disabled > label,
+.ui.form .fields.disabled > label {
+  opacity: 1;
+}
