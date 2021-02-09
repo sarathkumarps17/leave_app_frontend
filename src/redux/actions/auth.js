@@ -23,7 +23,7 @@ export const login = (userName, password) => async (dispatch) => {
     };
     const body = JSON.stringify({ userName, password });
     res = await action.post(`/login`, body, config);
-    // console.log(res.data);
+    console.log(res.data);
     dispatch({
       type: AUTH_SUCSUSS,
       payload: res.data,
