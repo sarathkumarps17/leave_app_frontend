@@ -23,7 +23,7 @@ export const login = (userName, password) => async (dispatch) => {
     };
     const body = JSON.stringify({ userName, password });
     res = await action.post(`/login`, body, config);
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({
       type: AUTH_SUCSUSS,
       payload: res.data,
@@ -44,7 +44,7 @@ export const checkToken = () => async (dispatch) => {
   }
   setAuthToken(localStorage.token);
   try {
-    let res = await action.get("advertiser/auth");
+    let res = await action.get("user/auth");
     if (res.status !== 200) {
       dispatch({
         type: TOKEN_EXPRIED,
