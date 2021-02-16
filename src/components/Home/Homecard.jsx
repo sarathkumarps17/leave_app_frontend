@@ -1,40 +1,58 @@
-import React from 'react';
-import { Card } from 'semantic-ui-react'
-const CardExampleLinkCard = () => (
-    <div className= "home_card">
-         <Card>
-      <Card.Content>
-        <Card.Header>Matthew Harris</Card.Header>
-        <Card.Meta>Co-Worker</Card.Meta>
-        <Card.Description>
-          Matthew is a pianist living in Nashville.
-        </Card.Description>
-      </Card.Content>
-    </Card>
+import React from 'react'
+import { Grid, Image, Card } from 'semantic-ui-react'
 
-    <Card>
-      <Card.Content>
-        <Card.Header content='Jake Smith' />
-        <Card.Meta content='Musicians' />
-        <Card.Description content='Jake is a drummer living in New York.' />
-      </Card.Content>
-    </Card>
+function Homecard() {
+  return(
+      <div className="homecard">
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <div className="homecard_1">
+                  <Card
+                    href='#card-example-link-card'
+                    header='Apply CL'
+                    meta='Casual Leave'
+                    description='New Casul Leave Application'
+                  />
+                </div>
+              </Grid.Column>
+              <Grid.Column width={8}>
+                <div className="homecard_2">
+                    <Card
+                      href='#card-example-link-card'
+                      header='Apply EL'
+                      meta='Earn Leave'
+                      description='Apply New Earn Leave'
+                    />
+                  </div>
+              </Grid.Column>
+            </Grid.Row>
 
-    <Card>
-      <Card.Content
-        header='Elliot Baker'
-        meta='Friend'
-        description='Elliot is a music producer living in Chicago.'
-      />
-    </Card>
-
-    <Card
-      header='Jenny Hess'
-      meta='Friend'
-      description='Jenny is a student studying Media Management at the New School'
-    />
-    </div>
-    
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <div className="homecard_3">
+                    <Card 
+                      href='#card-example-link-card'
+                      header='Apply HPL'
+                      meta='Half Pay Leave'
+                      description='Apply New HPL'
+                    />
+                  </div>
+              </Grid.Column>
+              <Grid.Column width={8}>
+                <div className="homecard_4">
+                      <Card
+                        href='#card-example-link-card'
+                        header='Extend Leave'
+                        meta=''
+                        description='Extend your Current leave'
+                      />
+                    </div>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+      </div>
   )
-  
-  export default CardExampleLinkCard
+}
+
+export default Homecard;
