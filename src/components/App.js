@@ -4,7 +4,7 @@ import React from "react";
 import Navbar from "./Layouts/Navbar";
 import "./App.css";
 import Login from "./Auth/Login";
-// import ProtectedRoute from "./Auth/ProtectedRoute";
+import ProtectedRoute from "./Auth/ProtectedRoute";
 import { Segment, Loader, Dimmer } from "semantic-ui-react";
 import { connect } from "react-redux";
 import Home from "./Home/Home";
@@ -33,7 +33,7 @@ function App(props) {
           <Navbar />
           <Switch>
             <Route exact path="/login" component={Login} />
-            <Route path="/" component={Home} />
+            <ProtectedRoute path="/" component={Home} />
           </Switch>
         </React.Suspense>
       </Router>

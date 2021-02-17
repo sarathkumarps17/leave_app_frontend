@@ -107,9 +107,28 @@ body {
     opacity: 1;
 }
 
-.home_card {
-    padding-left: 50%;
-    padding-top: 8%;
+.navbar{
+    padding-left: 20%;
+    padding-top: 2%;
+    padding-right: 5%;
 }
 
-.homecard_1 {}
+.navbar_1{
+    padding-left: 15% ;
+    font-size: large;
+    font-weight: 900;
+}
+
+.homecard{
+    padding-left: 25%;
+    padding-top: 4%;
+}
+
+.homecard_x{
+    background-color: aqua
+    ;
+}
+
+.homepage{
+    background-color: blueviolet;
+}

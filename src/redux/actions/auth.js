@@ -44,7 +44,7 @@ export const checkToken = () => async (dispatch) => {
   }
   setAuthToken(localStorage.token);
   try {
-    let res = await action.get("user/auth");
+    let res = await action.get("/login");
     if (res.status !== 200) {
       dispatch({
         type: TOKEN_EXPRIED,
