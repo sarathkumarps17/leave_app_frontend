@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         token: payload.token,
-        user: payload.userType,
+        user: payload.user,
         loading: false,
         isAuthenticated: true,
       };

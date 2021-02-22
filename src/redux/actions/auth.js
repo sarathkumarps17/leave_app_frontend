@@ -10,6 +10,8 @@ import {
 import { setAlert } from "./alert";
 
 import action from "./api";
+// import action from "./phpApi";
+
 
 ////////////////////////////////LOGIN Advertiser////////////////////////////
 
@@ -21,9 +23,9 @@ export const login = (userName, password) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    const body = JSON.stringify({ userName, password });
+    const body = JSON.stringify({ userName, password, });
     res = await action.post(`/login`, body, config);
-    // console.log(res.data);
+    console.log(res.data);
     dispatch({
       type: AUTH_SUCSUSS,
       payload: res.data,

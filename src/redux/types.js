@@ -12,3 +12,5 @@ export const LOGOUT = "LOGOUT";
 
 export const TOKEN_VALID = "TOKEN_VALID";
 export const TOKEN_EXPRIED = "TOKEN_EXPRIED";
+
+export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";

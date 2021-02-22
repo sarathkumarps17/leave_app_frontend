@@ -1,14 +1,17 @@
 import { Router, Switch, Route } from "react-router-dom";
 import React from "react";
 // import Register from "./Auth/Register";
-import Navbar from "./Layouts/Navbar";
+
 import "./App.css";
 import Login from "./Auth/Login";
 import ProtectedRoute from "./Auth/ProtectedRoute";
+
 import { Segment, Loader, Dimmer } from "semantic-ui-react";
 import { connect } from "react-redux";
-import Home from "./Home/Home";
+
 import history from "../history";
+import Layout from "./Layouts/Layout";
+import Navbar from "./Layouts/Navbar";
 
 const loading = (
   <Segment
@@ -33,7 +36,7 @@ function App(props) {
           <Navbar />
           <Switch>
             <Route exact path="/login" component={Login} />
-            <ProtectedRoute path="/" component={Home} />
+            <ProtectedRoute path="/" component={Layout} />
           </Switch>
         </React.Suspense>
       </Router>
