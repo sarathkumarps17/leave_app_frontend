@@ -19,11 +19,9 @@ import toggleSideBar from "../../redux/actions/ToggleSidebar"
 
 const Navbar = ({ logout, toggleSideBar, visible }) => (
   <Menu fixed="top" className="top-navbar">
-    <Button icon={visible ? "angle double right" : "angle double left"} animated onClick={toggleSideBar} className="toggle-button" />
-    <Menu.Item as={Link} to="/" header className="logo">
-      {/* <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} /> */}
-      {/*<div style={{background:`url(${logo}) center center/124px no-repeat`,width:'13em',height:'30px'}}></div> */}
-    </Menu.Item>
+    <div className="navbar-toggler">
+      <Icon className="navbar-toggler-icon" size="big" name={visible ? "angle double left" : "angle double right"} onClick={toggleSideBar} />
+    </div>
 
     <Menu.Menu className="homebar" position="right">
       <Menu.Item as={NavLink} to="/" activeClassName="active" >

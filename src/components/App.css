@@ -3,13 +3,16 @@ body {
 }
 .App {
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
 }
 .body-container {
-  padding-left: 2vw;
   padding-top: 10vh;
-  width: 70vw;
-  height: 80vh;
+  width: 95%;
+  height: 100%;
+}
+.leave-container {
+  width: 90%;
+  height: 100%;
 }
 .pusher {
   padding-left: 15vw;
@@ -57,4 +60,22 @@ body {
 .left-sidebar {
   height: 90vh !important;
   width: 15vw !important;
+}
+.navbar-toggler-icon {
+  cursor: pointer !important;
+  margin-left: 5vh !important;
+  padding-top: 5px;
+}
+#alert {
+  position: absolute;
+  top: 7.5vh;
+  left: 25vw;
+  z-index: 100000;
+  width: 50vw;
+  text-align: center;
+  margin: 0 auto 0 auto;
+  padding: 0;
+}
+.add-btn {
+  margin-left: 10px;
 }

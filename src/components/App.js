@@ -5,13 +5,14 @@ import React from "react";
 import "./App.css";
 import Login from "./Auth/Login";
 import ProtectedRoute from "./Auth/ProtectedRoute";
-
+import Footer from "./Layouts/Footer";
 import { Segment, Loader, Dimmer } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import history from "../history";
 import Layout from "./Layouts/Layout";
 import Navbar from "./Layouts/Navbar";
+import Alert from "./alert/Alert";
 
 const loading = (
   <Segment
@@ -34,10 +35,12 @@ function App(props) {
       <Router history={history}>
         <React.Suspense fallback={loading}>
           <Navbar />
+          <Alert />
           <Switch>
             <Route exact path="/login" component={Login} />
             <ProtectedRoute path="/" component={Layout} />
           </Switch>
+          <Footer />
         </React.Suspense>
       </Router>
     </div>

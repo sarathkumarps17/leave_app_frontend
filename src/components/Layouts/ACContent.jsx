@@ -1,13 +1,12 @@
 import React, { Suspense, Fragment } from 'react'
 import {
-    Redirect,
     Route,
     Switch
 } from 'react-router-dom'
-import { Container, Segment, Dimmer, Loader } from "semantic-ui-react"
+import { Segment, Dimmer, Loader } from "semantic-ui-react"
 
 // routes config
-import routes from "./routes"
+import { AC_routes } from "./routes"
 
 const loading = (
     <Segment
@@ -30,7 +29,7 @@ const TheContent = () => {
         <div className="body-container">
             <Suspense fallback={loading}>
                 <Switch>
-                    {routes.map((route, idx) => {
+                    {AC_routes.map((route, idx) => {
                         return route.component && (
                             <Route
                                 key={idx}

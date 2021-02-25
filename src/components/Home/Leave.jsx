@@ -2,37 +2,30 @@ import React, { useState } from 'react';
 import { connect } from "react-redux";
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
-import "react-dates/initialize";
-import { DateRangePicker } from "react-dates";
-import "react-dates/lib/css/_datepicker.css";
-import { Form } from 'semantic-ui-react';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Form, Button, Grid, GridRow, Icon } from 'semantic-ui-react';
+import { applayLeave } from "../../redux/actions/user";
+import { useImmer } from "use-immer";
 
 const moment = extendMoment(originalMoment);
 const leaveType = [
-    { key: 'CL', text: 'CL', value: 'CL' },
-    { key: 'BH', text: 'BH', value: 'BH' },
-    { key: 'ClBh', text: 'CL+BH', value: 'CL+BH' },
-    { key: 'OTHER', text: 'Other', value: 'Other' },
+    { key: 'CL', text: 'CL', value: 'cl' },
+    { key: 'BH', text: 'BH', value: 'bh' },
+    { key: 'OTHER', text: 'Other', value: 'other' },
 ]
 
-function Leave({ penNumber }) {
-    const today = moment();
-    const [focusedInput, setFocusedInput] = useState();
-    const [date, setDate] = useState({
-        fromDate: today.clone(),
-        toDate: today.clone().add(1, "days")
-    });
+function Leave({ penNumber, applayLeave }) {
     const initialState = {
         penNumber,
-        fromDate: today.clone().format("DD-MM-YYYY"),
-        toDate: today.clone().add(1, "days").format("DD-MM-YYYY"),
-        leaveType: "CL",
+        leaveDetails: [{ date: moment(new Date()).add(1, 'day').toDate(), leaveType: "cl" }],
         applicationReason: ""
     }
+    const [date, setDate] = useState({ date: initialState.leaveDetails[0].date, leaveType: "cl" })
+    // const [data, setdata] = useState(initialState);
     const [input, setInput] = useState(initialState);
     const handleChange = (event) => {
         let { name, value } = event.target;
-        // console.log(event.target.value);
         setInput((preValue) => {
             return {
                 ...preValue,
@@ -42,51 +35,114 @@ function Leave({ penNumber }) {
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setInput(preVal => ({
-            ...preVal,
-            fromDate: date.fromDate.format("DD-MM-YYYY"),
-            toDate: date.toDate.format("DD-MM-YYYY")
-        }))
-        console.log(input);
+        // await applayLeave(input);
+        // let leaveDetails = input.leaveDetails.map(item => (
+        //     {
+        //         leaveType: item.leaveType,
+        //         date: moment(item.date).format("DD/MM/YYYY")
+        //     }
+        // ))
+        // setdata({
+        //     penNumber: input.penNumber,
+        //     applicationReason: input.applicationReason,
+        //     leaveDetails: leaveDetails
+        // })
+        if (!input.leaveDetails.length) {
+            alert("Please Select Atleast One Day leave")
+        } else {
+            await applayLeave(input);
+        }
     };
+
+
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group widths='equal'>
-                <Form.Input name="penNumber" disabled fluid label='PEN Number' onChange={handleChange} value={input.penNumber} />
-                <Form.Select
-                    name="leaveType"
-                    onChange={handleChange}
-                    fluid
-                    label='Leave Type'
-                    options={leaveType}
-                    value={input.leaveType}
-                />
-            </Form.Group>
-            <label style={{ fontWeight: "bold" }}>
-                Leave Date
-            </label>
-            <DateRangePicker
-                minimumNights={0}
-                displayFormat="DD-MM-YYYY"
-                startDate={date.fromDate}
-                startDateId="fromDate"
-                endDate={date.toDate}
-                endDateId="toDate"
-                onDatesChange={({ startDate, endDate }) => {
-                    setDate({
-                        fromDate: startDate,
-                        toDate: endDate
-                    });
-                }}
-                focusedInput={focusedInput}
-                onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
-            />
-            <Form.TextArea required name="applicationReason" onChange={handleChange} label='Reason For Leave' placeholder='sir,' value={input.applicationReason} />
-            <Form.Button type="submit" >Submit</Form.Button>
-        </Form>
+        <div className="leave-container">
+            <Form onSubmit={handleSubmit}>
+                <Grid columns='equal'>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Form.Input name="penNumber" disabled label='PEN Number' width="six" onChange={handleChange} value={input.penNumber} />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <h4>Applied Leaves</h4>
+                    <Grid.Row>
+                        {input.leaveDetails.map((leave, index) => {
+                            return (
+                                <Grid.Column key={index} >
+                                    <Button
+                                        color="red"
+                                        icon="minus"
+                                        label={{ basic: true, pointing: 'right', content: leave.leaveType.toUpperCase() + " on " + moment(leave.date).format("DD/MM/YYYY") }}
+                                        labelPosition='left'
+                                        onClick={
+                                            (e) => {
+                                                e.preventDefault()
+                                                setInput(preValue => ({
+                                                    ...preValue,
+                                                    leaveDetails: preValue.leaveDetails.filter((val, ind) => ind !== index)
+                                                }));
+
+                                            }
+                                        }
+                                    />
+
+                                </Grid.Column>)
+
+                        })}
+
+                    </Grid.Row>
+                    <h4>Add leave</h4>
+                    <Grid.Row>
+                        <DatePicker
+                            minDate={moment(new Date()).add(1, 'day').toDate()}
+                            selected={date.date}
+                            onChange={(date) => setDate(preValue => ({
+                                ...preValue, date: date
+                            }))}
+                        />
+
+                        <Form.Select
+                            width="three"
+                            name="leaveType"
+                            onChange={(e, { value }) => setDate(preValue => (
+                                { ...preValue, leaveType: value }
+                            ))}
+                            options={leaveType}
+                            value={date.leaveType}
+                        />
+
+                        <div className="add-btn">
+
+                            <Icon
+                                link
+                                color="green"
+                                size="big"
+                                name="add circle"
+                                onClick={
+                                    (e) => {
+                                        e.preventDefault()
+                                        setInput(preValue => ({
+                                            ...preValue,
+                                            leaveDetails: [...preValue.leaveDetails, date]
+                                        }))
+                                    }
+                                }
+                            />
+                        </div>
+
+
+                    </Grid.Row>
+
+                </Grid>
+                <Form.TextArea required name="applicationReason" onChange={handleChange} label='Reason For Leave' placeholder='sir,' value={input.applicationReason} />
+
+                <Form.Button type="submit" >Submit</Form.Button>
+            </Form>
+        </div>
+
     )
 }
 const mapStateToProps = state => ({
     penNumber: state.auth.user.penNumber
 })
-export default connect(mapStateToProps)(Leave)
+export default connect(mapStateToProps, { applayLeave })(Leave)

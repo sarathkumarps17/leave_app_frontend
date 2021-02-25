@@ -40,7 +40,7 @@ function LeftMenu({ user, visible }) {
       />
 
       {user.userType === 2 && <><Menu.Item
-        name="CIs"
+        name="inspectors"
         as={NavLink}
         to="/sho"
         activeClassName="active"
@@ -49,11 +49,11 @@ function LeftMenu({ user, visible }) {
 
       </Menu.Item>
         <Menu.Item
-          name="SIs"
+          name="Sub Inspectors"
           as={NavLink}
           to="/si"
           activeClassName="active"
-          icon="building"
+          icon="shield"
         >
 
         </Menu.Item>
@@ -65,7 +65,7 @@ function LeftMenu({ user, visible }) {
         as={NavLink}
         to="/leave"
         activeClassName="active"
-        icon="building"
+        icon="edit"
       >
 
       </Menu.Item>

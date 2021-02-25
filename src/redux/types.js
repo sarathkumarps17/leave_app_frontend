@@ -13,4 +13,7 @@ export const LOGOUT = "LOGOUT";
 export const TOKEN_VALID = "TOKEN_VALID";
 export const TOKEN_EXPRIED = "TOKEN_EXPRIED";
 
+export const LEAVE_FETCHED = "LEAVE_FETCHED";
+export const FAILED_LEAVE_FETCHING = "FAILED_LEAVE_FETCHING";
+
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
