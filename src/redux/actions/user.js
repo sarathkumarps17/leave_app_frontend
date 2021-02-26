@@ -56,3 +56,27 @@ export const getLeaveRequests = () => async (dispatch) => {
         dispatch(setAlert("Failed fetching leave application", "warning"));
     }
 }
+
+export const confirmLeaveRequest = (leaveId, dateIds, aprovalStatus) => async (dispatch) => {
+    try {
+        if (localStorage.token) {
+            setAuthToken(localStorage.token);
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            };
+            const body = JSON.stringify({ leaveId, dateIds, aprovalStatus });
+            let res = await action.put("user/confirmLeaveRequest", body, config);
+            console.log(res.status);
+            if (res.status === 200) {
+                await dispatch(getLeaveRequests);
+                dispatch(setAlert(`Leave ${aprovalStatus} `, "success"));
+
+            }
+        }
+    } catch (error) {
+        dispatch(setAlert("Failed Leave confirmation", "warning"));
+
+    }
+}

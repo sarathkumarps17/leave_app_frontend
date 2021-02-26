@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from "react-redux"
-import { getLeaveRequests } from "../../../redux/actions/user"
-import { Segment, Dimmer, Loader, Container, Header, Button, Table, Grid, Icon, Sticky, Menu, Dropdown, Modal, Popup, Tab } from 'semantic-ui-react'
+import { connect } from "react-redux";
+import getDesignation from "../../../utils/getDesignation";
+import { getLeaveRequests } from "../../../redux/actions/user";
+import { Segment, Dimmer, Loader, Header, Table, Icon, } from 'semantic-ui-react'
 import LeaveConfirmModel from './LeaveConfirmModel';
 function ACLeaveView({ getLeaveRequests, loading, leave }) {
     const [open, setOpen] = useState({ leave: {}, open: false })
@@ -10,9 +11,7 @@ function ACLeaveView({ getLeaveRequests, loading, leave }) {
             await getLeaveRequests()
         }
         fetchLeaves();
-
         return () => {
-
         }
     }, [getLeaveRequests])
     const Loading = () => (
@@ -30,25 +29,10 @@ function ACLeaveView({ getLeaveRequests, loading, leave }) {
             </Dimmer>
         </Segment>
     );
-    const getDesignation = (userType) => {
-        switch (userType) {
-            case 1:
-                return "Commissioner/Deputy commissioner";
-            case 2:
-                return "Assistant commissioner"
-            case 3:
-                return "Inspector"
-            case 4:
-                return "Sub Inspector"
-            case 5:
-                return "Officer"
-            default:
-                break;
-        }
-    }
+
     return (
         <div>
-            {console.log(leave)}
+            {/* {console.log(leave)} */}
             <Table striped>
                 <Table.Header>
                     <Table.Row>
@@ -110,12 +94,10 @@ function ACLeaveView({ getLeaveRequests, loading, leave }) {
                                     </Table.Cell>
                                 </Table.Row>
                             })
-
-
                     }
                 </Table.Body>
             </Table>
-            <LeaveConfirmModel setOpen={setOpen} open={open} />
+            {open.open && <LeaveConfirmModel setOpen={setOpen} open={open} />}
         </div>
     )
 }
