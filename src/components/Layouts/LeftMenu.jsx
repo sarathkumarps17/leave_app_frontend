@@ -39,15 +39,25 @@ function LeftMenu({ user, visible }) {
         icon="calendar alternate"
       />
 
-      {user.userType === 2 && <><Menu.Item
-        name="inspectors"
-        as={NavLink}
-        to="/sho"
-        activeClassName="active"
-        icon="building"
-      >
+      {user.userType === 2 && <>
+        <Menu.Item
+          name="Leave Applicatios"
+          as={NavLink}
+          to="/leaveRequests"
+          activeClassName="active"
+          icon="envelope outline"
+        />
+        <Menu.Item
+          name="inspectors"
+          as={NavLink}
+          to="/sho"
+          activeClassName="active"
+          icon="building"
+        >
 
-      </Menu.Item>
+        </Menu.Item>
+
+
         <Menu.Item
           name="Sub Inspectors"
           as={NavLink}

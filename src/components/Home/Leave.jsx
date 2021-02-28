@@ -4,9 +4,9 @@ import originalMoment from "moment";
 import { extendMoment } from "moment-range";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Form, Button, Grid, GridRow, Icon } from 'semantic-ui-react';
+import { Form, Button, Grid, Icon } from 'semantic-ui-react';
 import { applayLeave } from "../../redux/actions/user";
-import { useImmer } from "use-immer";
+import { useHistory } from "react-router-dom"
 
 const moment = extendMoment(originalMoment);
 const leaveType = [
@@ -16,6 +16,7 @@ const leaveType = [
 ]
 
 function Leave({ penNumber, applayLeave }) {
+    let history = useHistory()
     const initialState = {
         penNumber,
         leaveDetails: [{ date: moment(new Date()).add(1, 'day').toDate(), leaveType: "cl" }],
@@ -35,22 +36,12 @@ function Leave({ penNumber, applayLeave }) {
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // await applayLeave(input);
-        // let leaveDetails = input.leaveDetails.map(item => (
-        //     {
-        //         leaveType: item.leaveType,
-        //         date: moment(item.date).format("DD/MM/YYYY")
-        //     }
-        // ))
-        // setdata({
-        //     penNumber: input.penNumber,
-        //     applicationReason: input.applicationReason,
-        //     leaveDetails: leaveDetails
-        // })
+
         if (!input.leaveDetails.length) {
             alert("Please Select Atleast One Day leave")
         } else {
             await applayLeave(input);
+            history.push("/")
         }
     };
 

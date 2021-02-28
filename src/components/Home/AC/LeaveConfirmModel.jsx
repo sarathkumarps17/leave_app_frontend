@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { confirmLeaveRequest } from "../../../redux/actions/user";
 import getDesignation from "../../../utils/getDesignation";
-import { Button, Header, Modal, Table, Icon, Grid, Form } from 'semantic-ui-react';
+import { Button, Header, Modal, Table, Icon, Grid, Form, Dropdown } from 'semantic-ui-react';
 function LeaveConfirmModel({ setOpen, open, confirmLeaveRequest }) {
     let { leave } = open;
     let designation = getDesignation(leave.userId.userType);
@@ -148,7 +148,54 @@ function LeaveConfirmModel({ setOpen, open, confirmLeaveRequest }) {
                 }}>
                     Reject
                 </Button>
-                <Button
+                <Dropdown
+                    text='Action'
+                    icon='hand point down'
+                    floating
+                    button
+                    className='icon'>
+                    <Dropdown.Menu
+                    >
+                        <Dropdown.Item
+                            content="Forwarded"
+                            labelPosition='right'
+                            icon='forward'
+                            onClick={(e) => {
+                                e.preventDefault();
+                                submitLeave("forwarded")
+                            }
+
+                            }
+                        />
+
+                        <Dropdown.Item
+                            disabled
+                            content="Approve"
+                            labelPosition='right'
+                            icon='checkmark'
+                            onClick={(e) => {
+                                e.preventDefault();
+                                submitLeave("approved")
+                            }
+
+                            }
+                        />
+                        <Dropdown.Item
+
+                            content="close"
+                            labelPosition='right'
+                            icon='close'
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setOpen({ open: false, leave: {} });
+                            }
+
+                            }
+                        />
+                    </Dropdown.Menu>
+
+                </Dropdown>
+                {/* <Button
                     content="Forwarded"
                     labelPosition='right'
                     icon='checkmark'
@@ -159,7 +206,7 @@ function LeaveConfirmModel({ setOpen, open, confirmLeaveRequest }) {
 
                     }
                     positive
-                />
+                /> */}
             </Modal.Actions>
         </Modal>
     )
