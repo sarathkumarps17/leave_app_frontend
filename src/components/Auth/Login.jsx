@@ -35,8 +35,8 @@ function Login({ login, isAuthenticated }) {
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" textAlign="center">
             <Grid.Row>
-              <Grid.Column>
-                <Image src="/dome-logo.png" />
+              <Grid.Column >
+                <Image className="logo-class" src="/dome-logo.png" />
               </Grid.Column>
               <Grid.Column>Log into Leave Manager</Grid.Column>
             </Grid.Row>

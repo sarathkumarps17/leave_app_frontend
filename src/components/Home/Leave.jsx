@@ -12,7 +12,7 @@ const moment = extendMoment(originalMoment);
 const leaveType = [
     { key: 'CL', text: 'CL', value: 'cl' },
     { key: 'BH', text: 'BH', value: 'bh' },
-    { key: 'OTHER', text: 'Other', value: 'other' },
+    // { key: 'OTHER', text: 'Other', value: 'other' },
 ]
 
 function Leave({ penNumber, applayLeave }) {
@@ -85,6 +85,7 @@ function Leave({ penNumber, applayLeave }) {
                     <h4>Add leave</h4>
                     <Grid.Row>
                         <DatePicker
+                            dateFormat="dd/MM/yyyy"
                             minDate={moment(new Date()).add(1, 'day').toDate()}
                             selected={date.date}
                             onChange={(date) => setDate(preValue => ({

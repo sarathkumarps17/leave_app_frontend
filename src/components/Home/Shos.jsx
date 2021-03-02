@@ -6,7 +6,7 @@ function Shos() {
         <div className="homecard">
             <Grid>
 
-                <Grid.Row>
+                {/* <Grid.Row>
                     <Grid.Column width={8}>
                         <div className="homecard_3">
                             <Card
@@ -25,9 +25,9 @@ function Shos() {
                                 meta=''
                                 description='Extend your Current leave'
                             />
-                        </div>
-                    </Grid.Column>
-                </Grid.Row>
+                        </div> */}
+                {/* </Grid.Column> */}
+                {/* </Grid.Row> */}
             </Grid>
         </div>
     )

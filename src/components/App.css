@@ -37,7 +37,16 @@ body {
 .ui.form .fields.disabled > label {
   opacity: 1;
 }
-
+.icon-gap {
+  padding-left: 10px;
+}
+.dashboard {
+  margin: 50px 20px 0px 20px;
+}
+.table-container {
+  width: 60vw;
+  height: auto;
+}
 /* 
 .homecard{
     padding-left: 25%;
@@ -78,4 +87,13 @@ body {
 }
 .add-btn {
   margin-left: 10px;
+}
+.footer {
+  position: absolute;
+  bottom: 20px;
+  left: 45vw;
+}
+.logo-class {
+  margin: auto auto;
+  padding-bottom: 5vh;
 }

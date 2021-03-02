@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
     return (
-        <div>
+        <div className="footer">
             @Cyberdome Kochi 2021
         </div>
     )

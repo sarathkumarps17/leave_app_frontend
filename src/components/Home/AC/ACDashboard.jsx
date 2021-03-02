@@ -1,6 +1,21 @@
 import React from 'react'
-import { Container, Grid, Card, Icon } from "semantic-ui-react";
+import { Container, Grid, Card, Icon, Label, Menu, Tab } from "semantic-ui-react";
+import LeaveList from '../LeaveList';
 function ACDashboard() {
+    const panes = [
+        {
+            menuItem: { key: 'Strength Status', icon: 'users', content: 'Users' },
+            render: () => <Tab.Pane>Strength</Tab.Pane>,
+        },
+        {
+            menuItem: (
+                <Menu.Item key='Leaves'>
+                    Leaves
+                </Menu.Item>
+            ),
+            render: () => <Tab.Pane><LeaveList /></Tab.Pane>,
+        },
+    ]
     return (
         <Container fluid className="dashboard">
             <Grid columns={3}>
@@ -42,7 +57,7 @@ function ACDashboard() {
                 </Grid.Column>
 
                 <Grid.Row>
-
+                    <Tab panes={panes} />
                 </Grid.Row>
                 <Grid.Row>
 

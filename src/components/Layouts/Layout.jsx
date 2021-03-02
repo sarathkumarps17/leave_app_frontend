@@ -7,6 +7,7 @@ import {
 } from "semantic-ui-react"
 import LeftMenu from './LeftMenu';
 import ACContent from './ACContent';
+import Dashboard from '../Home/Dashboard';
 
 
 function Layout({ userType, visible }) {
@@ -16,15 +17,14 @@ function Layout({ userType, visible }) {
         >
             <LeftMenu />
             <Sidebar.Pusher>
-                {/* <Navbar /> */}
-                <ACContent />
-
+                {userType === 2 ? <ACContent /> : <Dashboard />}
+                {/* <ACContent /> */}
             </Sidebar.Pusher>
         </Sidebar.Pushable>
         )
 }
 const mapStateToProps = state => ({
-    userType: state.auth.user,
+    userType: state.auth.user.userType,
     visible: state.visible
 })
 export default connect(mapStateToProps)(Layout);

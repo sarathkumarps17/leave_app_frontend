@@ -56,7 +56,7 @@ function LeaveConfirmModel({ setOpen, open, confirmLeaveRequest }) {
                                     </Table.Cell>
                                     <Table.Cell>
                                         <Header as="h5"
-                                            content={leave.userId.name}
+                                            content={leave.userId.name.toUpperCase()}
                                             subheader={leave.userId.penNumber}
                                         />
                                     </Table.Cell>
@@ -70,7 +70,7 @@ function LeaveConfirmModel({ setOpen, open, confirmLeaveRequest }) {
                                     </Table.Cell>
                                     <Table.Cell>
                                         <Header as="h5"
-                                            content={leave.userId.station.name}
+                                            content={leave.userId.station.name.toUpperCase()}
                                             subheader={designation}
                                         />
                                     </Table.Cell>
@@ -109,7 +109,7 @@ function LeaveConfirmModel({ setOpen, open, confirmLeaveRequest }) {
                                         <Table.Cell>
                                             <Header as="h5"
                                                 content={new Date(item.date).toDateString().slice(3)}
-                                                subheader={item.leaveType}
+                                                subheader={item.leaveType.toUpperCase()}
                                             />
                                         </Table.Cell>
                                         <Table.Cell>

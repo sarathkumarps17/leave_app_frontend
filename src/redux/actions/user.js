@@ -80,3 +80,30 @@ export const confirmLeaveRequest = (leaveId, dateIds, aprovalStatus) => async (d
 
     }
 }
+
+export const getUserLeave = () => async (dispatch) => {
+    try {
+        if (localStorage.token) {
+            setAuthToken(localStorage.token);
+            let res = await action.get(`user/userLeave/`);
+            console.log(res.data);
+            if (res.data) {
+                dispatch(
+                    {
+                        type: LEAVE_FETCHED,
+                        payload: res.data,
+                    }
+                )
+                dispatch(setAlert("User's Leave fetched", "success"));
+            }
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch(
+            {
+                type: FAILED_LEAVE_FETCHING,
+            }
+        )
+        dispatch(setAlert("Failed fetching leave application", "warning"));
+    }
+}
