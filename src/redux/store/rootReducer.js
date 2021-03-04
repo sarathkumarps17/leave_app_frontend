@@ -9,5 +9,6 @@ export const rootReducer = combineReducers({
   alert: alertReducer,
   auth: authReducer,
   leave: leaveReducer,
+  requests: leaveReducer,
   visible: SidebarReducer
 });

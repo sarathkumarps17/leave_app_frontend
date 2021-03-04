@@ -97,3 +97,35 @@ body {
   margin: auto auto;
   padding-bottom: 5vh;
 }
+.text-center {
+  text-align: center;
+}
+.heading-leave {
+  font-size: 1.25rem;
+  color: #db2828;
+  padding-left: 1vw;
+}
+.heading-available {
+  font-size: 1.25rem;
+  color: #21ba45;
+  padding-left: 1vw;
+}
+.heading-strength {
+  font-size: 1.25rem;
+  color: #2185d0;
+  padding-left: 1vw;
+}
+.heading {
+  height: 4vh;
+}
+.content-class {
+  padding-top: 0.5rem;
+}
+.rbc-calendar {
+  height: 40vh !important;
+  width: 50vw !important;
+}
+.leave-cols {
+  padding-top: 2vh;
+  padding-left: 1vw;
+}

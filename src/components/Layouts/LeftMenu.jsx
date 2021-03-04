@@ -48,16 +48,16 @@ function LeftMenu({ user, visible }) {
           icon="envelope outline"
         />
         <Menu.Item
-          name="inspectors"
+          name="Strength"
           as={NavLink}
-          to="/sho"
+          to="/strength"
           activeClassName="active"
           icon="building"
         >
 
         </Menu.Item>
 
-
+        {/* 
         <Menu.Item
           name="Sub Inspectors"
           as={NavLink}
@@ -66,7 +66,7 @@ function LeftMenu({ user, visible }) {
           icon="shield"
         >
 
-        </Menu.Item>
+        </Menu.Item> */}
 
 
       </>}

@@ -15,7 +15,7 @@ export const AC_routes = [
 
 export const User_routes = [
     { path: "/", exact: true, name: "Home", component: Dashboard },
-    { path: "/sho", name: "Sho", component: Shos },
+    // { path: "/sho", name: "Sho", component: Shos },
     { path: "/leave", name: "Leave", component: Leave },
 
 ];

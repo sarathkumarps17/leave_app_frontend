@@ -62,11 +62,14 @@ function LeaveList({ getUserLeave, leave, loading }) {
 
                                 </Table.Cell>
                                 <Table.Cell>
+
                                     {item.leaveDetails.map(val =>
-                                        <div>
-                                            <span key={val._id}>{new Date(val.date).toDateString().slice(3)}</span>
+                                        <Table.Row key={val._id} >
+                                            <Table.Cell>{new Date(val.date).toDateString().slice(3)}</Table.Cell>
                                             {val.aproved ? <Icon name="check" color="green" /> : <Icon name="close" color="yellow" />}
-                                        </div>)}
+                                        </Table.Row>)}
+
+
                                 </Table.Cell>
                                 <Table.Cell>
                                     {item.aprovalStatus.toUpperCase()}

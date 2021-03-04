@@ -7,7 +7,8 @@ import {
 } from "semantic-ui-react"
 import LeftMenu from './LeftMenu';
 import ACContent from './ACContent';
-import Dashboard from '../Home/Dashboard';
+// import Dashboard from '../Home/Dashboard';
+import UserContent from './UserContent';
 
 
 function Layout({ userType, visible }) {
@@ -17,7 +18,7 @@ function Layout({ userType, visible }) {
         >
             <LeftMenu />
             <Sidebar.Pusher>
-                {userType === 2 ? <ACContent /> : <Dashboard />}
+                {userType === 2 ? <ACContent /> : <UserContent />}
                 {/* <ACContent /> */}
             </Sidebar.Pusher>
         </Sidebar.Pushable>

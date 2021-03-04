@@ -32,10 +32,11 @@ export const applayLeave = (leaveData) => async (dispatch) => {
 
 export const getLeaveRequests = () => async (dispatch) => {
     try {
+        console.log("requested")
         if (localStorage.token) {
             setAuthToken(localStorage.token);
             let res = await action.get(`user/leaveRequests/`);
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data) {
                 dispatch(
                     {
@@ -44,6 +45,12 @@ export const getLeaveRequests = () => async (dispatch) => {
                     }
                 )
                 dispatch(setAlert("Leave applications fetched", "success"));
+            } else {
+                dispatch(
+                    {
+                        type: FAILED_LEAVE_FETCHING,
+                    }
+                )
             }
         }
     } catch (error) {
@@ -107,3 +114,29 @@ export const getUserLeave = () => async (dispatch) => {
         dispatch(setAlert("Failed fetching leave application", "warning"));
     }
 }
+
+
+export const getSubdivisionStrength = () => async (dispatch) => {
+    try {
+        if (localStorage.token) {
+            setAuthToken(localStorage.token);
+            let res = await action.get(`user/strength/`);
+            if (res.data) {
+                dispatch(setAlert("Strength Fetched", "success"));
+                return res.data;
+
+            }
+        }
+    } catch (error) {
+        console.log(error);
+        return null
+        //     dispatch(
+        //         {
+        //             type: FAILED_LEAVE_FETCHING,
+        //         }
+        //     )
+        //     dispatch(setAlert("Failed fetching leave application", "warning"));
+    }
+
+}
+

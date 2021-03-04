@@ -5,15 +5,19 @@ import { getLeaveRequests } from "../../../redux/actions/user";
 import { Segment, Dimmer, Loader, Header, Table, Icon, } from 'semantic-ui-react'
 import LeaveConfirmModel from './LeaveConfirmModel';
 function ACLeaveView({ getLeaveRequests, loading, leave }) {
-    const [open, setOpen] = useState({ leave: {}, open: false })
+    const [open, setOpen] = useState({ leave: {}, open: false });
+    const [frontendLoading, setFrontendLoading] = useState(true)
+
     useEffect(() => {
         const fetchLeaves = async () => {
-            await getLeaveRequests()
+            setFrontendLoading(true)
+            await getLeaveRequests();
+            setFrontendLoading(false)
         }
         fetchLeaves();
         return () => {
         }
-    }, [getLeaveRequests])
+    }, [])
     const Loading = () => (
         <Segment
             style={{
@@ -45,7 +49,7 @@ function ACLeaveView({ getLeaveRequests, loading, leave }) {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {loading ? <Loading /> :
+                    {loading || frontendLoading ? <Loading /> :
                         !leave.length ?
                             (<Table.Row>
                                 <Table.Cell>
@@ -102,7 +106,7 @@ function ACLeaveView({ getLeaveRequests, loading, leave }) {
     )
 }
 const mapStateProps = state => ({
-    leave: state.leave.leave,
-    loading: state.leave.loading
+    leave: state.requests.leave,
+    loading: state.requests.loading
 })
 export default connect(mapStateProps, { getLeaveRequests })(ACLeaveView)

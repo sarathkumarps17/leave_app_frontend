@@ -25,7 +25,7 @@ export default function (state = initialState, action) {
         case LOGOUT:
             return {
                 ...state,
-                loading: false,
+                loading: true,
                 leave: []
             };
         default:

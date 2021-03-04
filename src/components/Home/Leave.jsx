@@ -19,10 +19,10 @@ function Leave({ penNumber, applayLeave }) {
     let history = useHistory()
     const initialState = {
         penNumber,
-        leaveDetails: [{ date: moment(new Date()).add(1, 'day').toDate(), leaveType: "cl" }],
+        leaveDetails: [],
         applicationReason: ""
     }
-    const [date, setDate] = useState({ date: initialState.leaveDetails[0].date, leaveType: "cl" })
+    const [date, setDate] = useState({ date: moment(new Date()).add(1, 'day').toDate(), leaveType: "cl" })
     // const [data, setdata] = useState(initialState);
     const [input, setInput] = useState(initialState);
     const handleChange = (event) => {
@@ -49,17 +49,17 @@ function Leave({ penNumber, applayLeave }) {
     return (
         <div className="leave-container">
             <Form onSubmit={handleSubmit}>
-                <Grid columns='equal'>
-                    <Grid.Row>
+                <Grid >
+                    <Grid.Row >
                         <Grid.Column>
                             <Form.Input name="penNumber" disabled label='PEN Number' width="six" onChange={handleChange} value={input.penNumber} />
                         </Grid.Column>
                     </Grid.Row>
-                    <h4>Applied Leaves</h4>
-                    <Grid.Row>
+                    <h4> Leave Dates</h4>
+                    <Grid.Row >
                         {input.leaveDetails.map((leave, index) => {
                             return (
-                                <Grid.Column key={index} >
+                                <Grid.Column className="leave-cols" widescreen="2" computer="3" tablet="6" mobile="10" key={index} >
                                     <Button
                                         color="red"
                                         icon="minus"
@@ -84,49 +84,60 @@ function Leave({ penNumber, applayLeave }) {
                     </Grid.Row>
                     <h4>Add leave</h4>
                     <Grid.Row>
-                        <DatePicker
-                            dateFormat="dd/MM/yyyy"
-                            minDate={moment(new Date()).add(1, 'day').toDate()}
-                            selected={date.date}
-                            onChange={(date) => setDate(preValue => ({
-                                ...preValue, date: date
-                            }))}
-                        />
-
-                        <Form.Select
-                            width="three"
-                            name="leaveType"
-                            onChange={(e, { value }) => setDate(preValue => (
-                                { ...preValue, leaveType: value }
-                            ))}
-                            options={leaveType}
-                            value={date.leaveType}
-                        />
-
-                        <div className="add-btn">
-
-                            <Icon
-                                link
-                                color="green"
-                                size="big"
-                                name="add circle"
-                                onClick={
-                                    (e) => {
-                                        e.preventDefault()
-                                        setInput(preValue => ({
-                                            ...preValue,
-                                            leaveDetails: [...preValue.leaveDetails, date]
-                                        }))
-                                    }
-                                }
+                        <Grid.Column className="leave-cols" widescreen="3" computer="3" tablet="6" mobile="10">
+                            <DatePicker
+                                dateFormat="dd/MM/yyyy"
+                                minDate={moment(new Date()).add(1, 'day').toDate()}
+                                selected={date.date}
+                                onChange={(date) => setDate(preValue => ({
+                                    ...preValue, date: date
+                                }))}
                             />
-                        </div>
+
+                        </Grid.Column>
+                        <Grid.Column className="leave-cols" widescreen="3" computer="4" tablet="6" mobile="10" >
+
+
+                            <Form.Select
+                                width="three"
+                                name="leaveType"
+                                onChange={(e, { value }) => setDate(preValue => (
+                                    { ...preValue, leaveType: value }
+                                ))}
+                                options={leaveType}
+                                value={date.leaveType}
+                            />
+
+
+                        </Grid.Column>
+                        <Grid.Column className="leave-cols">
+                            <div className="add-btn">
+
+                                <Icon
+                                    link
+                                    color="green"
+                                    size="big"
+                                    name="add circle"
+                                    onClick={
+                                        (e) => {
+                                            e.preventDefault()
+                                            setInput(preValue => ({
+                                                ...preValue,
+                                                leaveDetails: [...preValue.leaveDetails, date]
+                                            }))
+                                        }
+                                    }
+                                />
+                            </div>
+
+                        </Grid.Column>
+
 
 
                     </Grid.Row>
 
                 </Grid>
-                <Form.TextArea required name="applicationReason" onChange={handleChange} label='Reason For Leave' placeholder='sir,' value={input.applicationReason} />
+                <Form.TextArea maxlength="150" required name="applicationReason" onChange={handleChange} label='Reason For Leave' placeholder='Please briefly type leave reason..' value={input.applicationReason} />
 
                 <Form.Button type="submit" >Submit</Form.Button>
             </Form>
