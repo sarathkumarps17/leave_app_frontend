@@ -90,8 +90,9 @@ body {
 }
 .footer {
   position: absolute;
-  bottom: 20px;
-  left: 45vw;
+  bottom: 2vh;
+  left: 50%;
+  transform: translateY(-50%);
 }
 .logo-class {
   margin: auto auto;
