@@ -20,13 +20,13 @@ function LeftMenu({ user, visible }) {
       <Menu.Item className="profile-card">
         <Card wrapped="true" >
           <Card.Content textAlign='center'>
-            <Card.Header >{user.name}</Card.Header>
-            <Card.Meta>
+            <Card.Header className="card-header" >{user.name}</Card.Header>
+            <Card.Meta className="card-meta">
               {user.designation}
             </Card.Meta>
           </Card.Content>
-          <Card.Content textAlign='center' extra>
-            <Button as={NavLink} to="/edit-profile" basic>View Profile</Button>
+          <Card.Content className="btn-wrap" textAlign='center' extra>
+            <Button size="small" as={NavLink} to="/edit-profile" basic><p className="btn-text">View Profile</p></Button>
           </Card.Content>
         </Card>
       </Menu.Item>

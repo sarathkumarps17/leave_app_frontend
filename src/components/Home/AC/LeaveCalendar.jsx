@@ -55,12 +55,13 @@ const LeaveCalendar = ({ getMonthlyLeaveStat }) => {
             {state.loading ? (
                 <Loading />
             ) : <Calendar
-                    localizer={localizer}
-                    events={state.data}
-                    startAccessor="start"
-                    endAccessor="end"
-                // style={{ height: 400,width: }}
-                />}
+                localizer={localizer}
+                events={state.data}
+                startAccessor="start"
+                endAccessor="end"
+                className="leave-calander"
+            // style={{ height: 400,width: }}
+            />}
 
         </div>
     )

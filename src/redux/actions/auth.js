@@ -16,6 +16,7 @@ import action from "./api";
 ////////////////////////////////LOGIN Advertiser////////////////////////////
 
 export const login = (userName, password) => async (dispatch) => {
+
   try {
     let res;
     const config = {
@@ -24,6 +25,7 @@ export const login = (userName, password) => async (dispatch) => {
       },
     };
     const body = JSON.stringify({ userName, password, });
+    console.log(body);
     res = await action.post(`/login`, body, config);
     // console.log(res.data);
     dispatch({

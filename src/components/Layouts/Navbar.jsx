@@ -17,7 +17,7 @@ import toggleSideBar from "../../redux/actions/ToggleSidebar"
 
 // TODO: Update <Search> usage after its will be implemented
 
-const Navbar = ({ logout, toggleSideBar, visible }) => (
+const Navbar = ({ isAuthenticated, logout, toggleSideBar, visible }) => (
   <Menu fixed="top" className="top-navbar">
     <div className="navbar-toggler">
       <Icon className="navbar-toggler-icon" size="big" name={visible ? "angle double left" : "angle double right"} onClick={toggleSideBar} />
@@ -27,11 +27,13 @@ const Navbar = ({ logout, toggleSideBar, visible }) => (
       <Menu.Item as={NavLink} to="/" activeClassName="active" >
         Home
         </Menu.Item>
-      <Menu.Item onClick={logout}>Log Out</Menu.Item>
+      {isAuthenticated && <Menu.Item onClick={logout}>Log Out</Menu.Item>}
+
     </Menu.Menu>
   </Menu>
 );
 const mapStateToProps = state => ({
-  visible: state.visible
+  visible: state.visible,
+  isAuthenticated: state.auth.isAuthenticated
 })
 export default connect(mapStateToProps, { logout, toggleSideBar })(Navbar);

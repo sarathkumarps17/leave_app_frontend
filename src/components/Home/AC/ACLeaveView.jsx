@@ -35,7 +35,7 @@ function ACLeaveView({ getLeaveRequests, loading, leave }) {
     );
 
     return (
-        <div>
+        <div className="leave-table">
             {/* {console.log(leave)} */}
             <Table striped>
                 <Table.Header>

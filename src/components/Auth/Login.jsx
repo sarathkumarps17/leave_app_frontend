@@ -29,16 +29,16 @@ function Login({ login, isAuthenticated }) {
     return (
       <Grid
         textAlign="center"
-        style={{ height: "80vh" }}
+        className="login-grid"
         verticalAlign="middle"
       >
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column className="login-grid-logo-column">
           <Header as="h2" textAlign="center">
             <Grid.Row>
               <Grid.Column >
                 <Image className="logo-class" src="/dome-logo.png" />
               </Grid.Column>
-              <Grid.Column>Log into Leave Manager</Grid.Column>
+              <Grid.Column className="logo-heading">Log into Leave Manager</Grid.Column>
             </Grid.Row>
           </Header>
 
@@ -61,7 +61,7 @@ function Login({ login, isAuthenticated }) {
           >
             {({ isSubmitting, errors, values }) => (
               <>
-                <Form className="ui large form">
+                <Form className="ui form">
                   <Segment stacked>
                     <div className="field">
                       <div className="ui fluid left icon input">

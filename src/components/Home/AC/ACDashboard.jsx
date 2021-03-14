@@ -43,54 +43,54 @@ function ACDashboard({ getSubdivisionStrength }) {
         <Container fluid className="dashboard">
             <Grid columns={3}>
                 <Grid.Column>
-                    <Card>
+                    <Card fluid className="strength-card">
                         <Card.Header className="text-center heading">
                             <div className="content-class">
-                                <Icon size="big" name='users' color="blue" />
+                                <Icon className="card-icon" name='users' color="blue" />
                                 <span className="heading-strength" >Total Strength</span>
                             </div>
 
                         </Card.Header>
                         <Card.Content className="text-center ">
-                            <h3>Inspectors: {state.IO.strength}</h3>
-                            <h3>Sub Inspectors:{state.SI.strength}</h3>
+                            <h3 className="card-header">Inspectors: {state.IO.strength}</h3>
+                            <h3 className="card-header">Sub Inspectors:{state.SI.strength}</h3>
                         </Card.Content>
                     </Card>
                 </Grid.Column>
                 <Grid.Column>
-                    <Card>
+                    <Card fluid className="strength-card">
                         <Card.Header className="text-center heading">
                             <div className="content-class">
-                                <Icon size="big" name='users' color="red" />
+                                <Icon className="card-icon" name='users' color="red" />
                                 <span className="heading-leave">On Leave/Unavailable</span>
                             </div>
 
                         </Card.Header>
                         <Card.Content className="text-center">
 
-                            <h3>Inspectors: {state.IO.leave + state.IO.unavailable}</h3>
-                            <h3>Sub Inspectors:{state.SI.leave + state.SI.unavailable}</h3>
+                            <h3 className="card-header">Inspectors: {state.IO.leave + state.IO.unavailable}</h3>
+                            <h3 className="card-header">Sub Inspectors:{state.SI.leave + state.SI.unavailable}</h3>
                         </Card.Content>
                     </Card>
                 </Grid.Column>
                 <Grid.Column>
-                    <Card>
+                    <Card fluid className="strength-card">
                         <Card.Header className="text-center heading">
                             <div className="content-class">
-                                <Icon size="big" name='users' color="green" />
+                                <Icon className="card-icon" name='users' color="green" />
                                 <span className="heading-available" >Available Streangth</span>
                             </div>
 
                         </Card.Header>
                         <Card.Content className="text-center">
-                            <h3>Inspectors: {state.IO.strength - (state.IO.leave + state.IO.unavailable)}</h3>
-                            <h3>Sub Inspectors:{state.SI.strength - (state.SI.leave + state.SI.unavailable)}</h3>
+                            <h3 className="card-header">Inspectors: {state.IO.strength - (state.IO.leave + state.IO.unavailable)}</h3>
+                            <h3 className="card-header">Sub Inspectors:{state.SI.strength - (state.SI.leave + state.SI.unavailable)}</h3>
                         </Card.Content>
                     </Card>
                 </Grid.Column>
 
-                <Grid.Row>
-                    <Tab panes={panes} />
+                <Grid.Row className="panes">
+                    <Tab className="panes-body" panes={panes} />
                 </Grid.Row>
                 <Grid.Row>
 
